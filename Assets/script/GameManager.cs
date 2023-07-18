@@ -5,9 +5,9 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject UI, level1, level2, titlescreen, level3;
+    public GameObject UI, level1, level2, titlescreen, level3, level4, level5;
     public int health, stamina;
-    public TextMeshProUGUI HealthText, StaminaText;
+    public TextMeshProUGUI healthText, staminaText;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HealthText.text = health.ToString();
-        StaminaText.text = stamina.ToString();
+        healthText.text = health.ToString();
+        staminaText.text = stamina.ToString();
     }
     public void StartGameButton()
     {
@@ -31,11 +31,48 @@ public class GameManager : MonoBehaviour
         
         level2.SetActive(false);
         level3.SetActive(true);
+        level5.SetActive(false);
+        level4.SetActive(false); ;
+       
+
     }
     public void Button_1()
     {
         level1.SetActive(false);
         level2.SetActive(true);
-        
+        stamina -= 5;
+      
+
     }
+    public void levelfour()
+    {
+        level2.SetActive(false);
+        level4.SetActive(true);
+        level1.SetActive(false);
+       
+    }
+    public void restart()
+    {
+        titlescreen.SetActive(true);
+        level3.SetActive(false);
+        level5.SetActive(false);
+       
+
+        if (health < 10)
+        {
+            health = 10;
+        }
+        if (stamina < 10)
+        {
+            stamina = 10;
+        }
+    }
+
+    public void levelfive()
+    {
+        level4.SetActive(false);
+        level5.SetActive(true);
+        health -= 10;
+    }
+  
 }
